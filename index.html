@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input type="text" name="todo">
+        <input type="submit" value="Add">
+    </form>
+    <ul>
+        {% for i, todo in enumerate(todos) %}
+            <li>
+                <input type="checkbox" {% if todo["completed"] %}checked{% endif %} onclick="window.location='/complete/{{ i }}'">
+                {{ todo["name"] }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
